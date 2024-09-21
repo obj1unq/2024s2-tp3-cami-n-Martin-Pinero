@@ -5,6 +5,10 @@ object knightRider {
 	method bultosQueRepresenta(){
 		return 1
 	}
+
+	method consecuenciaDeLaCarga(){
+		//no hace nada
+	}
 }
 
 
@@ -26,6 +30,10 @@ object bumblebee {
 	method bultosQueRepresenta(){
 		return 2
 	}
+
+	method consecuenciaDeLaCarga(){
+		forma.transformarABumblebee()
+	}
 	
 }
 
@@ -35,6 +43,10 @@ object auto {
 	method nivelPeligrosidad(){
 		return peligrosidad
 	}
+
+	method transformarABumblebee(){
+		bumblebee.forma(robot)
+	}
 }
 
 object robot {
@@ -42,6 +54,10 @@ object robot {
 
 	method nivelPeligrosidad(){
 		return peligrosidad
+	}
+
+	method transformarABumblebee(){
+		bumblebee.forma(auto)
 	}
 }
 
@@ -68,6 +84,10 @@ object paqueteDeLadrillos {
 		       else if (cantidadDeLadrillos <= 300) 2 
 			   else 3
 	}
+
+	method consecuenciaDeLaCarga(){
+		cantidadDeLadrillos += 12
+	}
 }
 
 
@@ -82,6 +102,10 @@ object arenaAGranel{
 
 	method bultosQueRepresenta(){
 		return 1
+	}
+
+	method consecuenciaDeLaCarga(){
+		peso += 20
 	}
 
 
@@ -118,6 +142,10 @@ object bateriaAntiaerea {
 
 	method bultosDeMisiles(){
 		return if(tieneMisilesCargados) 1 else 0
+	}
+
+	method consecuenciaDeLaCarga(){
+		tieneMisilesCargados = true
 	}
 }
 
@@ -164,6 +192,10 @@ object contenedorPortuario{
 		return bultosBase + cosas.sum({cosa => cosa.bultosQueRepresenta()})
 	}
 
+	method consecuenciaDeLaCarga(){
+		cosas.forEach({cosa => cosa.consecuenciaDeLaCarga()})
+	}
+
 	//hacer excepcion si tiene adentro otro contenedor portuario?
 	
 }
@@ -177,6 +209,10 @@ object residuosRadioactivos{
 	}
 	method bultosQueRepresenta(){
 		return 1
+	}
+
+	method consecuenciaDeLaCarga(){
+		peso += 15
 	}
 }
 
@@ -197,6 +233,10 @@ object embalaje {
 
 	method bultosQueRepresenta(){
 		return 2
+	}
+
+	method consecuenciaDeLaCarga(){
+		// no hace nada
 	}
 
 

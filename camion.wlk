@@ -6,6 +6,7 @@ object camion {
 		
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
+		unaCosa.consecuenciaDeLaCarga()
 	}	
 
 	method descargar(unaCosa){
@@ -65,7 +66,7 @@ object camion {
 	}
 
 	method totalBultos(){
-		
+		return cosas.sum({cosa => cosa.bultosQueRepresenta()})
 	}
 
 }
