@@ -52,9 +52,6 @@ object camion {
 		return not self.excedidoDePeso() and not cosas.any({cosa => cosa.nivelPeligrosidad() > nivelMaximoPeligrosidad})
 	}
 
-	
-
-
-
-
 }
+
+
