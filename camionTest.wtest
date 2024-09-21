@@ -1,6 +1,0 @@
-import camion.*
-import cosas.*
-
-describe "El camion, transporta la carga al almacen"{
-    camion.
-}

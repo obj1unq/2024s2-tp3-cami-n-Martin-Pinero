@@ -1,4 +1,5 @@
 import cosas.*
+import almacen.*
 
 object camion {
 	const property cosas = #{}
@@ -67,6 +68,12 @@ object camion {
 
 	method totalBultos(){
 		return cosas.sum({cosa => cosa.bultosQueRepresenta()})
+	}
+
+	method descargar(){
+		almacen.depositar(cosas)
+		cosas.clear()
+
 	}
 
 }

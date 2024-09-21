@@ -114,7 +114,7 @@ object arenaAGranel{
 object bateriaAntiaerea {
 	const pesoBase = 200
 	const peligrosidadBase = 0
-	var tieneMisilesCargados = false
+	var   tieneMisilesCargados = false
 	const bultosBase = 1
     
 	method peso(){
@@ -169,7 +169,14 @@ object contenedorPortuario{
 	const bultosBase = 1
 
 	method agregar(cosa){
+		self.checkAddContenedor(cosa)
 		cosas.add(cosa)
+	}
+
+	method checkAddContenedor(cosa){
+		if (not cosa == contenedorPortuario){ //se podria usar polimorfismo
+			self.error("no se puede guardar un contenedor dentro de otro!")
+		}
 	}
 
 	method peso(){
@@ -196,7 +203,6 @@ object contenedorPortuario{
 		cosas.forEach({cosa => cosa.consecuenciaDeLaCarga()})
 	}
 
-	//hacer excepcion si tiene adentro otro contenedor portuario?
 	
 }
 
@@ -220,7 +226,14 @@ object embalaje {
 	var contenido = residuosRadioactivos
 	
 	method envolver(cosa){
+		self.checkEnvolverEmbajale(cosa)
 		contenido = cosa
+	}
+
+	method checkEnvolverEmbajale(cosa){
+		if (not cosa == embalaje) {
+	        self.error("no se puede envolver embalaje")
+		    }
 	}
 
 	method peso(){
