@@ -52,6 +52,22 @@ object camion {
 		return not self.excedidoDePeso() and not cosas.any({cosa => cosa.nivelPeligrosidad() > nivelMaximoPeligrosidad})
 	}
 
+	method tieneAlgoQuePesaEntre(min, max) {
+		return cosas.any({cosa => cosa.peso() > min}) and cosas.any({cosa => cosa.peso() < max})
+	}
+
+	method cosaMasPesada(){
+		return cosas.max({cosa => cosa.peso()})
+	}
+
+	method pesos(){
+		return cosas.map({cosa => cosa.peso()})
+	}
+
+	method totalBultos(){
+		
+	}
+
 }
 
 

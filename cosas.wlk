@@ -1,6 +1,10 @@
 object knightRider {
 	method peso() { return 500 }
 	method nivelPeligrosidad() { return 10 }
+
+	method bultosQueRepresenta(){
+		return 1
+	}
 }
 
 
@@ -17,6 +21,10 @@ object bumblebee {
 
 	method forma(_forma){
 		forma = _forma
+	}
+
+	method bultosQueRepresenta(){
+		return 2
 	}
 	
 }
@@ -54,6 +62,12 @@ object paqueteDeLadrillos {
 	method nivelPeligrosidad(){
 		return peligrosidad
 	}
+
+	method bultosQueRepresenta(){
+		return if (cantidadDeLadrillos <= 100) 1 
+		       else if (cantidadDeLadrillos <= 300) 2 
+			   else 3
+	}
 }
 
 
@@ -66,26 +80,26 @@ object arenaAGranel{
 		return peligrosidad
 	}
 
+	method bultosQueRepresenta(){
+		return 1
+	}
+
 
 }
-
-/*Batería antiaérea : el peso es 300 kilos si está con los misiles o 200 en otro caso. 
-En cuanto a la peligrosidad es 100 si está con los misiles y 0 en otro caso.*/
 
 object bateriaAntiaerea {
 	const pesoBase = 200
 	const peligrosidadBase = 0
 	var tieneMisilesCargados = false
+	const bultosBase = 1
     
 	method peso(){
 		return pesoBase + self.pesoDeMisiles()
 	}
 
 	method pesoDeMisiles(){
-		return  if (tieneMisilesCargados){
-			       misiles.peso()
-		           } else {0
-				}
+		return  if (tieneMisilesCargados) misiles.peso() else 0
+				
 	}
 
 	method nivelPeligrosidad(){
@@ -93,15 +107,18 @@ object bateriaAntiaerea {
 	}
 
 	method peligrosidadDeMisiles(){
-		return  if (tieneMisilesCargados){
-			       misiles.nivelPeligrosidad()
-		           } else {0
-				}
+		return  if (tieneMisilesCargados) misiles.nivelPeligrosidad() else 0
+				
 	
 	}
 
+	method bultosQueRepresenta(){
+		return bultosBase + self.bultosDeMisiles()
+	}
 
-
+	method bultosDeMisiles(){
+		return if(tieneMisilesCargados) 1 else 0
+	}
 }
 
 object misiles {
@@ -117,13 +134,11 @@ object misiles {
 
 
 }
-/*Contenedor portuario: un contenedor puede tener otras cosas adentro. El peso es 100 + la suma de todas las 
-osas que estén adentro. 
-Es tan peligroso como el objeto más peligroso que contiene. Si está vacío, su peligrosidad es 0.*/
 object contenedorPortuario{
 	const cosas =[]	
 	const pesoBase = 100
 	const peligrosidadBase= 0
+	const bultosBase = 1
 
 	method agregar(cosa){
 		cosas.add(cosa)
@@ -144,6 +159,12 @@ object contenedorPortuario{
 	method peligrosidadMaximaDeLaCarga(){
 		return cosas.max({cosa => cosa.nivelPeligrosidad()}).nivelPeligrosidad()
 	}
+
+	method bultosQueRepresenta(){
+		return bultosBase + cosas.sum({cosa => cosa.bultosQueRepresenta()})
+	}
+
+	//hacer excepcion si tiene adentro otro contenedor portuario?
 	
 }
 
@@ -154,21 +175,28 @@ object residuosRadioactivos{
 	method nivelPeligrosidad(){
 		return peligrosidad
 	}
+	method bultosQueRepresenta(){
+		return 1
+	}
 }
 
 object embalaje {
-	const contenido = []
+	var contenido = residuosRadioactivos
 	
 	method envolver(cosa){
-		contenido.add(cosa)
+		contenido = cosa
 	}
 
 	method peso(){
-		return contenido.sum({cosa => cosa.peso()})
+		return contenido.peso()
 	}
 
 	method nivelPeigrosidad(){
-		return contenido.sum({cosa => cosa.nivelPeligrosidad()}) / 2
+		return contenido.nivelPeligrosidad() / 2
+	}
+
+	method bultosQueRepresenta(){
+		return 2
 	}
 
 
