@@ -48,6 +48,10 @@ object camion {
 		return cosas.filter ({elemento => elemento.nivelPeligrosidad() > cosa.nivelPeligrosidad()})
 	}
 
+	method puedeCircularEnRuta(nivelMaximoPeligrosidad) {
+		return not self.excedidoDePeso() and not cosas.any({cosa => cosa.nivelPeligrosidad() > nivelMaximoPeligrosidad})
+	}
+
 	
 
 
