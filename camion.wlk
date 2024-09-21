@@ -4,16 +4,6 @@ import almacen.*
 object camion {
 	const property cosas = #{}
 	const pesoTara = 1000
-	var rutaElegida = ruta9
-	var lugarDeEntrega = almacen
-
-	method rutaElegida(_rutaElegida){
-		rutaElegida = _rutaElegida
-	}
-
-	method lugarDeEntrega(_lugarDeEntrega){
-		lugarDeEntrega=_lugarDeEntrega
-	}
 		
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
@@ -83,42 +73,43 @@ object camion {
 	}
 
 	method transportar(destino, camino){
-		self.rutaElegida(camino)
-		self.lugarDeEntrega(destino)
 		self.checkPeso()
-		self.checkCamino()
-		self.descargar() // el check de la capacidad del almacen, está en el mismo.
+		camino.checkCamino()
+		destino.descargar() // el check de la capacidad del almacen, está en el mismo.
 	
 	}
-
-method checkCamino(){
-	if (not lugarDeEntrega.puedeCircularElCamion()){
-		self.error("el camino no admite al camion!")
-	}
-}
-
 	method checkPeso(){
-		if(not self.excedidoDePeso()){
-			self.error("el camion esta sobrecargado")
+		if (not self.excedidoDePeso()){
+			self.error("el camion está excedido de peso")
 		}
 	}
-
 }
+
+
+
+
 
 object ruta9{
 	const property peligrosidad = 11
 
-	method puedeCircularElCamion(){
-		return camion.puedeCircularEnRuta(peligrosidad)
+	method checkCamino(){
+		if (not camion.puedeCircularEnRuta(peligrosidad)) {
+			self.error("No puede circular, exceso de peligrosidad")
+		}
+
 	}
 
 }
 
 object caminosVecinales{
-	var property pesoQueSoporta = 3000
+	var property pesoQueSoporta = 2300
 
-	method puedeCircularElCamion(){
-		return camion.pesoTotal() <= pesoQueSoporta
+	method checkCamino(){
+		if (not camion.pesoTotal() > pesoQueSoporta){
+			self.error("el camion pesa mas de lo que soporta el camino vecinal")
+		}
+
+
 	}
 
 }
