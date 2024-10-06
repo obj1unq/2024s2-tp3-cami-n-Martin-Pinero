@@ -6,8 +6,8 @@ object camion {
 	const pesoTara = 1000
 		
 	method cargar(unaCosa) {
-		cosas.add(unaCosa)
 		unaCosa.cambiarPropiedadesAlCargar()
+		cosas.add(unaCosa)
 	}	
 
 	method descargar(cosa){
