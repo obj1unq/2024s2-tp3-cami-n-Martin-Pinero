@@ -169,14 +169,7 @@ object contenedorPortuario{
 	const bultosBase = 1
 
 	method agregar(cosa){
-		self.checkAddContenedor(cosa)
 		cosas.add(cosa)
-	}
-
-	method checkAddContenedor(cosa){
-		if (not cosa == contenedorPortuario){ //se podria usar polimorfismo
-			self.error("no se puede guardar un contenedor dentro de otro!")
-		}
 	}
 
 	method peso(){
@@ -226,14 +219,7 @@ object embalaje {
 	var contenido = residuosRadioactivos
 	
 	method envolver(cosa){
-		self.checkEnvolverEmbajale(cosa)
 		contenido = cosa
-	}
-
-	method checkEnvolverEmbajale(cosa){
-		if (not cosa == embalaje) {
-	        self.error("no se puede envolver embalaje")
-		    }
 	}
 
 	method peso(){
