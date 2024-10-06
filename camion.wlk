@@ -15,7 +15,7 @@ object camion {
 	}
 
 	method esPesoPar(cosa){
-		return cosa.peso() % 2 ==  0 
+		return cosa.peso().even() 
 	}
 
 	method hayAlgunoQuePesa(peso){
