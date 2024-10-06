@@ -10,6 +10,10 @@ object camion {
 		unaCosa.consecuenciaDeLaCarga()
 	}	
 
+	method descargar(cosa){
+		cosas.remove(cosa)
+	}
+
 	method todoPesoPar(){
         return cosas.all({cosa => self.esPesoPar(cosa)})
 	}
@@ -66,16 +70,10 @@ object camion {
 		return cosas.sum({cosa => cosa.bultosQueRepresenta()})
 	}
 
-	method descargar(){
-		almacen.depositar(cosas)
-		cosas.clear()
-
-	}
-
 	method transportar(destino, camino){
 		self.checkPeso()
 		camino.checkCamino()
-		destino.descargar() // el check de la capacidad del almacen, está en el mismo.
+		destino.depositar(self) // el check de la capacidad del almacen, está en el mismo.
 	
 	}
 	method checkPeso(){

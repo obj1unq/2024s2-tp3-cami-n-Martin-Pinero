@@ -1,1 +1,7 @@
-//Vale por un pagaré por una batería de tests
+import camion.*
+import almacen.*
+import cosas.*
+
+describe "Tests para camion"{
+    test ""
+}
