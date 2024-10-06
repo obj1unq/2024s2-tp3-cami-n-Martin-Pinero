@@ -43,7 +43,7 @@ object camion {
 	}
 
 	method objetosMasPeligrososQue(cosa){
-		return cosas.filter ({elemento => elemento.nivelPeligrosidad() > cosa.nivelPeligrosidad()})
+		return self.objetosQueSuperanPeligrosidad(cosa.nivelPeligrosidad())
 	}
 
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad) {
