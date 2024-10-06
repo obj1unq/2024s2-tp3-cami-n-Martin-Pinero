@@ -59,8 +59,7 @@ El viaje puede ser por la ruta 9 o por caminos vecinales. Esta elección se hace
 
 Para que el transporte pueda ser realizado debe cumplirse con las siguientes condiciones:
 * El camión no tiene que estar excedido de peso
-* El almacén tiene una cantidad de bultos máximos que no puede superar. Por ejemplo, si contiene arena a granel (1 bulto), el máximo de bultos
-del almacén se configura en 3, y el camión contiene a Bumblebee y Knight Rider (3 bultos), entonces no se puede transportar.
+* El almacén tiene una cantidad de bultos máximos que no puede superar. Por ejemplo, si contiene arena a granel (1 bulto), el máximo de bultos del almacén se configura en 3, y el camión contiene a Bumblebee y Knight Rider (3 bultos), entonces no se puede transportar.
 * El camino soporte el viaje:
 	* El nivel de peligrosidad de la ruta 9 es 11, solo se puede usar la ruta 9 en los casos en "puedaCircularEnRuta" del punto 1
 	* Los caminos vecinales tienen un peso máximo soportado que es configurable. El peso total del camión no puede ser superior al peso tolerado

@@ -1,0 +1,56 @@
+import camion.*
+import almacen.*
+import cosas.*
+
+describe "Tests para camion"{
+    test "carga y descarga de cosas"{
+        assert.equals(#{}, camion.cosas())
+
+        camion.cargar(bumblebee)
+        camion.cargar(paqueteDeLadrillos)
+        camion.cargar(knightRider)
+
+        assert.equals(#{bumblebee, paqueteDeLadrillos, knightRider}, camion.cosas())
+
+        camion.descargar(bumblebee)
+        camion.descargar(knightRider)
+
+        assert.equals(#{paqueteDeLadrillos}, camion.cosas())
+
+    }
+
+    test "comprobacion de pesos"{
+        assert.equals(1000, camion.pesoTotal())
+
+        camion.cargar(bumblebee) // +800
+        camion.cargar(paqueteDeLadrillos) //+24
+        camion.cargar(arenaAGranel) // +20
+        camion.cargar(bateriaAntiaerea) // +300
+        //tara +1000
+
+
+        assert.equals(2144, camion.pesoTotal())
+        assert.that(camion.todoPesoPar())
+        assert.notThat(camion.excedidoDePeso())
+        assert.that(camion.tieneAlgoQuePesaEntre(100, 1000))
+        assert.notThat(camion.tieneAlgoQuePesaEntre(5000, 9000))
+        
+
+    }
+
+    test "comprobacion de peligrosidad"{
+        camion.cargar(bumblebee) //+30
+        camion.cargar(paqueteDeLadrillos) // +2
+        camion.cargar(arenaAGranel)  // +1
+        camion.cargar(bateriaAntiaerea) //+100
+
+
+    }
+    
+}
+
+
+
+describe "test para almacen"{
+
+}
