@@ -3,6 +3,13 @@ import almacen.*
 import cosas.*
 
 describe "Tests para camion"{
-    test ""
+    test "carga de cosas"{
+        assert.equals(#{}, camion.cosas())
+        camion.cargar(bumblebee)
+        paqueteDeLadrillos.cantidadDeLadrillos(100)
+        camion.cargar(paqueteDeLadrillos)
+        camion.cargar(knightRider)
+        assert.equals(#{bumblebee, paqueteDeLadrillos, knightRider}, camion.cosas())
+    }
     
 }

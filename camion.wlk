@@ -7,7 +7,7 @@ object camion {
 		
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
-		unaCosa.consecuenciaDeLaCarga()
+		unaCosa.cambiarPropiedadesAlCargar()
 	}	
 
 	method descargar(cosa){
