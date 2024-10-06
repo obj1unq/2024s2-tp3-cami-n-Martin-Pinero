@@ -6,7 +6,7 @@ object knightRider {
 		return 1
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		//no hace nada
 	}
 }
@@ -31,7 +31,7 @@ object bumblebee {
 		return 2
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		forma.transformarABumblebee()
 	}
 	
@@ -85,7 +85,7 @@ object paqueteDeLadrillos {
 			   else 3
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		cantidadDeLadrillos += 12
 	}
 }
@@ -104,7 +104,7 @@ object arenaAGranel{
 		return 1
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		peso += 20
 	}
 
@@ -144,7 +144,7 @@ object bateriaAntiaerea {
 		return if(tieneMisilesCargados) 1 else 0
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		tieneMisilesCargados = true
 	}
 }
@@ -192,8 +192,8 @@ object contenedorPortuario{
 		return bultosBase + cosas.sum({cosa => cosa.bultosQueRepresenta()})
 	}
 
-	method consecuenciaDeLaCarga(){
-		cosas.forEach({cosa => cosa.consecuenciaDeLaCarga()})
+	method cambiarPropiedadesAlCargar(){
+		cosas.forEach({cosa => cosa.cambiarPropiedadesAlCargar()})
 	}
 
 	
@@ -210,7 +210,7 @@ object residuosRadioactivos{
 		return 1
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		peso += 15
 	}
 }
@@ -234,7 +234,7 @@ object embalaje {
 		return 2
 	}
 
-	method consecuenciaDeLaCarga(){
+	method cambiarPropiedadesAlCargar(){
 		// no hace nada
 	}
 
