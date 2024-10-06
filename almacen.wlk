@@ -9,9 +9,9 @@ object almacen{
         capacidadMaxima = _capacidadMaxima
     }
 
-    method depositar(cosas){
-        self.checkCapacidad(cosas)
-        deposito.addAll(cosas)
+    method depositar(camion){
+        self.checkCapacidad(camion.cosas())
+        deposito.addAll(camion.cosas())
 
     }
 
